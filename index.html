@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Trading Simulator</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div id="headerLogo">
+            <div id="brandPart1">Stock</div>
+            <div id="brandPart2">Sims</div>
+        </div>
+        <div id="headerGreeting">
+            <div>Welcome,&nbsp </div>
+            <div id="displayName">Guest</div>
+        </div>
+    </header>
+    <nav class="navbar">
+        <a href="#" class="hamburger-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="Index.html" class="active">Home</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Trade</a></li>
+                <li><a href="#">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="index-main">
+        <section id="introductionSection">
+            <p>Welcome to StockSims. A free stock trading simulator!</p>
+        </section>
+        <section id="userInputSection">
+            <div>
+                <label for="fname">First name:</label>
+                <input type="text" id="fName" name="fname">
+                <label for="lname">Last name:</label>
+                <input type="text" id="lName" name="lname">
+            </div>
+            <div><label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br>
+                <button type="submit" id="nameSubmit">Submit</button>
+            </div>
+        </section>
+
+        <section id="searchSection">
+
+            <div>
+                <p>To begin, enter the ticker symbol for a publicly listed company and hit search.</p>
+                <input type="text" id="dataSearch" name="datasearch">
+                <button type="submit" id="searchSubmit">Search</button><br><br>
+            </div>
+
+            <div>
+                <div id="staticQuote">
+                    <table>
+
+                    </table>
+                </div>
+                <div>
+                    <button type="button" id="refreshButton">Refresh Quote</button>
+                    <button type="button" id="trade">Trade</button>
+                </div>
+
+                <div id="popupTicket">
+                    <h2>Stocks/ETFs</h2>
+                    <p>
+                        <label for="name" id="name">Name</label><br>
+                        <label for="ticker" id="ticker">Symbol</label><br>
+                        <label for="price" id="price">Price</label><br>
+                        <label for="dayChange" id="dayChange">Day Change</label><br>
+                    </p>
+                    <p>
+                        <label for="action">Action</label>
+                        <select name="action" id="action">
+                            <option value="buy">Buy</option>
+                            <option value="sell">Sell</option>
+                        </select>
+
+                    </p>
+                    <p>
+                        <label for="quantityType">Quantity Type</label>
+                        <select name="quantityType" id="quantityType">
+                            <option value="shares">Shares</option>
+                            <option value="dollars">Dollars</option>
+                        </select>
+
+                    </p>
+                    <p>
+                        <label for="quantity">Quantity</label>
+                        <input type="text" id="quantity" name="quantity"></p>
+                    <p>
+                        <label for="orderType">Order Type</label>
+                        <select name="orderType" id="orderType">
+                            <option value="market">Market Order</option>
+                            <option value="limit">Limit Order</option>
+                        </select>
+                    </p>
+                    <button type="button" id="buyButton">Buy</button>
+                    <button type="button" id="sellButton">Sell</button>
+                </div>
+            </div>
+
+
+        </section>
+        <section>
+
+        </section>
+    </main>
+    <footer>
+        <div class="page-bottom">
+            <em>
+                <p>StockSims is designed and managed by Chao Chen</p>
+            </em>
+
+        </div>
+        <div class="social-media-icons">
+            <a href="https://github.com/chaochen11988" class="fa fa-github" id="footer-github-icon"></a>
+            <a href="https://www.linkedin.com/in/chao-chen-239030177" class="fa fa-linkedin"
+                id="footer-linkedin-icon"></a>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
