@@ -10,6 +10,9 @@
 }
 
 /* CSS Grid layout */
+#popUpTicket {
+    display: none;
+}
 
 body {
     display: grid;
