@@ -35,32 +35,43 @@
             <ul>
                 <li><a href="Index.html" class="active">Home</a></li>
                 <li><a href="#">Search</a></li>
-                <li><a href="#">Trade</a></li>
+                <li><a href="#">Transact</a></li>
+                <li><a href="#">Positons</a></li>
                 <li><a href="#">Feedback</a></li>
             </ul>
         </div>
     </nav>
     <main class="index-main">
         <section id="introductionSection">
-            <p>Welcome to StockSims. A free stock trading simulator!</p>
+            <h3>Welcome to StockSims. A game that simulates the stock market!</h3>
         </section>
         <section id="userInputSection">
+            <h4>Lets start with your information and a deposit.</h4>
             <div>
-                <label for="fname">First name:</label>
+
+                <label for="fname">First name</label>
                 <input type="text" id="fName" name="fname">
-                <label for="lname">Last name:</label>
+                <label for="lname">Last name</label>
                 <input type="text" id="lName" name="lname">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <button type="button" id="nameSubmit">Submit</button>
+
             </div>
-            <div><label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br>
-                <button type="submit" id="nameSubmit">Submit</button>
+            <div>
+                <label for="deposit">Deposit</label>
+                <input type="number" id="deposit" name="deposit">
+                <button type="button" id="depositSubmit">Submit</button><br>
+                <label for="withdraw">Withdraw</label>
+                <input type="number" id="withdraw" name="withdraw">
+                <button type="button" id="withdrawSubmit">Submit</button>
             </div>
         </section>
 
         <section id="searchSection">
 
             <div>
-                <p>To begin, enter the ticker symbol for a publicly listed company and hit search.</p>
+                <h4>To begin, enter the ticker symbol for a publicly listed company and hit search.</h4>
                 <input type="text" id="dataSearch" name="datasearch">
                 <button type="submit" id="searchSubmit">Search</button><br><br>
             </div>
@@ -70,14 +81,15 @@
                     <table>
 
                     </table>
+
                 </div>
                 <div>
                     <button type="button" id="refreshButton">Refresh Quote</button>
                     <button type="button" id="trade">Trade</button>
+                    <button type="button" id="changedMyMind">I Changed My Mind</button>
                 </div>
-
-                <div id="popupTicket">
-                    <h2>Stocks/ETFs</h2>
+                <div id="popUpTicket">
+                    <h3>Stocks and Exchange-Traded Funds</h3>
                     <p>
                         <label for="name" id="name">Name</label><br>
                         <label for="ticker" id="ticker">Symbol</label><br>
@@ -112,13 +124,20 @@
                     </p>
                     <button type="button" id="buyButton">Buy</button>
                     <button type="button" id="sellButton">Sell</button>
+
                 </div>
             </div>
 
 
         </section>
-        <section>
-
+        <section id="positions">
+            <h3>Positions</h3>
+            <div id="currentPositions">
+                currentPositions
+            </div>
+            <div id="runningCashTotal">
+                Available Cash:$
+            </div>
         </section>
     </main>
     <footer>
