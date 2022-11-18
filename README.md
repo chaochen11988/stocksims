@@ -20,7 +20,7 @@ My website, StockSims, is a fictional website composed of HTML, CSS, and JavaScr
 
 To begin, start by opening the index.html file with a code editer such as Visual Studio Code and preview in a live server. Once the live section is started, you can begin by inputting some user information. The input data will be auto generated into the Feedback form (as of right now, this section is used primarily as a placeholder and will later be upgraded into a log in section). The search section will currently accept all publicly listed company (stocks and ETFs traded on the major exchanges). A full list can be founded on https://www.stockdata.org/search which is the third party API that is integrated. NOTE: The free subsciption which is what StockSims utilizes is limited to 100 requests daily. 
 
-This website is an ongoing project and will continue to have updates as I further pursue HTML, CSS, JavaScript and other frameworks. Some features of the web application are still under construction such as the options for limit orders, dollar based orders, and the Feedback form. The website will continue to be updated as I incorporate Express JS and MongoDB in the very near future. 
+This website is an ongoing project and will continue to have updates as I further pursue HTML, CSS, JavaScript and other frameworks. NOTE:Some features of the web application are still under construction such as the options for limit orders, dollar based orders, and the Feedback form, sell option, market value section. The website will continue to be updated as I incorporate Express JS and MongoDB in the very near future. 
 
 If you have any feedback or suggestions on how to improve the website or code, don't hesitate to reach out.
 
