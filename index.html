@@ -42,12 +42,15 @@
         </div>
     </nav>
     <main class="index-main">
+
+        </div>
+        </p>
         <section id="introductionSection">
             <h3>Welcome to StockSims. A game that simulates the stock market!</h3>
         </section>
         <section id="userInputSection">
             <h4>Lets start with your information and a deposit.</h4>
-            <div>
+            <div id="userInfoDiv">
 
                 <label for="fname">First name</label>
                 <input type="text" id="fName" name="fname"><br>
@@ -58,7 +61,7 @@
                 <button type="button" id="infoSubmit">Submit</button>
 
             </div>
-            <div>
+            <div id="transactionDiv">
                 <label for="deposit">Deposit</label>
                 <input type="number" id="deposit" name="deposit">
                 <button type="button" id="depositSubmit">Submit</button><br>
@@ -87,19 +90,28 @@
                 </div>
                 <div id="popUpTicket">
                     <h3>Trade Confirmation</h3>
+
                     <p>
                         <label for="name" id="name">Name</label><br>
                         <label for="ticker" id="ticker">Symbol</label><br>
                         <label for="price" id="price">Price</label><br>
                         <label for="dayChange" id="dayChange">Day Change</label><br>
                     </p>
-                    <p>
+                    <!-- <p>
                         <label for="action">Action</label>
-                        <select name="action" id="action">
-                            <option value="buy">Buy</option>
-                            <option value="sell" disabled>Sell</option>
-                        </select>
-
+                        <div>
+                            <input type="radio" id="buy" name="buy" checked>
+                            <label for="buy">Buy</label>
+                          </div>
+                      
+                          <div>
+                            <input type="radio" id="sell" name="sell">
+                            <label for="sell">Sell</label>
+                          </div>
+                    </p> -->
+                    <p>
+                        <label for="acquisitionDate">Acquisition Date</label>
+                        <input type="text" id="acquisitionDate" name="acquisitionDate"></p>
                     </p>
                     <p>
                         <label for="quantityType">Quantity Type</label>
@@ -124,7 +136,8 @@
                     <div id="availableCashForTrade">
                         Available Cash for Trade: $0
                     </div>
-                    <!-- <button type="button" id="sellButton">Confirm Sell</button> -->
+
+
 
                 </div>
             </div>
@@ -142,6 +155,9 @@
                         <th>Quantity</th>
                     </tr>
                 </table>
+            </div>
+            <div id="marketValue">
+                Market Value: $0
             </div>
             <div id="runningCashTotal">
                 Total Cash: $0

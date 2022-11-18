@@ -55,6 +55,14 @@ form div {
     margin-right: 10%;
 }
 
+#userInputSection button {
+    display: grid;
+    justify-content: center;
+    justify-self: center;
+}
+
+
+#userInputSection button,
 #searchDiv button {
     background: #e8a87c;
     color: #fff;
@@ -78,6 +86,7 @@ form button {
     margin: 18px auto;
 }
 
+#userInputSection button:hover,
 #searchDiv button:hover,
 form button:hover {
     background-color: #e27d60;
@@ -291,12 +300,23 @@ a.active,
     border-radius: 20px;
 }
 
-#userInputSection {
-    display: grid;
 
+
+
+
+#userInputSection>div {
+    display: grid;
 }
 
+#userInfoDiv {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+
+#userInputSection>h4,
 #searchSection>div>h4 {
+    display: grid;
     text-align: center;
     margin: 10px;
 }
@@ -316,6 +336,11 @@ a.active,
     align-content: center;
 }
 
+#fName,
+#lName,
+#email,
+#deposit,
+#withdraw,
 #dataSearch {
     margin: 7px;
     padding: 5px;
@@ -373,6 +398,22 @@ footer>.social-media-icons {
 @media screen and (min-width: 361px) {}
 
 @media screen and (min-width: 640px) {
+    #userInfoDiv {
+        display: grid;
+        grid-column-start: 1;
+        grid-column-start: 6;
+    }
+
+    #transactionDiv {
+        display: grid;
+        grid-column-start: 7;
+        grid-column-start: 13;
+    }
+
+
+
+
+
 
     header {
         flex-direction: column;
@@ -392,11 +433,6 @@ footer>.social-media-icons {
         flex-direction: row;
     }
 
-
-
-
-
-
     #footer-linkedin-icon {
         font-size: 45px;
     }
@@ -404,6 +440,7 @@ footer>.social-media-icons {
     #footer-github-icon {
         font-size: 45px;
     }
+
 
 }
 
