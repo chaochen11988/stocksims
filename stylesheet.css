@@ -61,6 +61,16 @@ form div {
     justify-self: center;
 }
 
+#popUpTicket button {
+    background: #e8a87c;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    padding: 7px;
+    width: 150px;
+}
 
 #userInputSection button,
 #searchDiv button {
@@ -86,6 +96,7 @@ form button {
     margin: 18px auto;
 }
 
+#popUpTicket button:hover,
 #userInputSection button:hover,
 #searchDiv button:hover,
 form button:hover {
@@ -101,11 +112,34 @@ form button:hover {
 
 #popUpTicket {
     display: flex;
-    /* flex-direction: column;
-    width: 50%;
-    margin-left: 25%; */
+    flex-direction: column;
+    background: #E2E8F0;
+
+    /* width: 50%; */
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    /* justify-items: center;
+    align-content: center; */
+    /* justify-content: flex-start; */
+
+
+}
+
+/* #popUpTicket>p,
+#popUpTicket>h3 {
+    display: flex;
     justify-content: center;
+
+    width: 50%; 
+    margin-left: 10%;
+    margin-right: 10%;
+     justify-items: center;
     align-content: center;
+    
+} */
+
+#staticQuote {
+    justify-content: center;
 }
 
 #staticQuote>tr {
@@ -162,7 +196,6 @@ td {
     text-align: center;
 }
 
-/* CSS Grid layout */
 #popUpTicket {
     display: none;
 }
@@ -336,7 +369,9 @@ a.active,
 #dataSearch,
 #searchSubmit,
 #trade,
-#reset {
+#reset,
+#refreshButton,
+#buyButton {
     display: flex;
     margin: 5px;
     justify-content: center;

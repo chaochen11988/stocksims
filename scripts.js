@@ -85,7 +85,7 @@ document.getElementById('searchSubmit').onclick = function () {
         document.getElementById('price').innerHTML = `${stockData.price}`;
         document.getElementById('dayChange').innerHTML = `Day Change: ${stockData.day_change}`;
     });
-    staticQuoteDiv.style.display = 'block';
+    staticQuoteDiv.style.display = 'flex';
     popUpTicketDiv.style.display = 'none';
 }
 
@@ -194,7 +194,7 @@ const btnResetQuotes = document.getElementById('reset');
 
 btnStaticQuoteDiv.onclick = function () {
     staticQuoteDiv.style.display = 'none';
-    popUpTicketDiv.style.display = 'block';
+    popUpTicketDiv.style.display = 'flex';
     // if (staticQuoteDiv.style.display !== 'none') {
     //     staticQuoteDiv.style.display = 'none';
     //     popUpTicketDiv.style.display = 'block';
