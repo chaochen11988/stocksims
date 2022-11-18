@@ -308,11 +308,18 @@ a.active,
     display: grid;
 }
 
-#userInfoDiv {
+#transactionDiv>div,
+#userInfoDiv>div {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
 }
 
+#userInfoDiv>div>label,
+#transactionDiv>div>label {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
 
 #userInputSection>h4,
 #searchSection>div>h4 {
@@ -398,22 +405,6 @@ footer>.social-media-icons {
 @media screen and (min-width: 361px) {}
 
 @media screen and (min-width: 640px) {
-    #userInfoDiv {
-        display: grid;
-        grid-column-start: 1;
-        grid-column-start: 6;
-    }
-
-    #transactionDiv {
-        display: grid;
-        grid-column-start: 7;
-        grid-column-start: 13;
-    }
-
-
-
-
-
 
     header {
         flex-direction: column;
@@ -447,12 +438,30 @@ footer>.social-media-icons {
 
 @media screen and (min-width: 1007px) {
 
+    #userInputSection {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #userInputSection>h4 {
+        grid-column-start: 1;
+        grid-column-end: 13;
+    }
+
+
+    #transactionDiv>div>label,
+    #transactionDiv>div>button,
+    #userInfoDiv>div>label,
+    #transactionDiv>div>button {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+    }
+
     header {
         flex-direction: row;
         justify-content: space-between;
     }
-
-
 
     #footer-linkedin-icon {
         font-size: 50px;

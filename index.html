@@ -51,23 +51,25 @@
         <section id="userInputSection">
             <h4>Lets start with your information and a deposit.</h4>
             <div id="userInfoDiv">
-
-                <label for="fname">First name</label>
-                <input type="text" id="fName" name="fname"><br>
-                <label for="lname">Last name</label>
-                <input type="text" id="lName" name="lname"><br>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email"><br>
-                <button type="button" id="infoSubmit">Submit</button>
-
+                <div>
+                    <label for="fname">First name</label>
+                    <input type="text" id="fName" name="fname"><br>
+                    <label for="lname">Last name</label>
+                    <input type="text" id="lName" name="lname"><br>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"><br>
+                    <button type="button" id="infoSubmit">Submit</button>
+                </div>
             </div>
             <div id="transactionDiv">
-                <label for="deposit">Deposit</label>
-                <input type="number" id="deposit" name="deposit">
-                <button type="button" id="depositSubmit">Submit</button><br>
-                <label for="withdraw">Withdraw</label>
-                <input type="number" id="withdraw" name="withdraw">
-                <button type="button" id="withdrawSubmit">Submit</button>
+                <div>
+                    <label for="deposit">Deposit</label>
+                    <input type="number" id="deposit" name="deposit">
+                    <button type="button" id="depositSubmit">Submit</button><br>
+                    <label for="withdraw">Withdraw</label>
+                    <input type="number" id="withdraw" name="withdraw">
+                    <button type="button" id="withdrawSubmit">Submit</button>
+                </div>
             </div>
         </section>
 
@@ -97,6 +99,13 @@
                         <label for="price" id="price">Price</label><br>
                         <label for="dayChange" id="dayChange">Day Change</label><br>
                     </p>
+                    <p>
+                        <label for="action">Action</label>
+                        <select name="trade" id="tradeType">
+                            <option value="buy">Buy</option>
+                            <option value="sell" disabled>Sell</option>
+                        </select>
+                    </p>
                     <!-- <p>
                         <label for="action">Action</label>
                         <div>
@@ -109,17 +118,18 @@
                             <label for="sell">Sell</label>
                           </div>
                     </p> -->
-                    <p>
+                    <!-- inprogress for sell orders
+                        
+                        <p>
                         <label for="acquisitionDate">Acquisition Date</label>
                         <input type="text" id="acquisitionDate" name="acquisitionDate"></p>
-                    </p>
+                    </p> -->
                     <p>
                         <label for="quantityType">Quantity Type</label>
                         <select name="quantityType" id="quantityType">
                             <option value="shares">Shares</option>
                             <option value="dollars" disabled>Dollars</option>
                         </select>
-
                     </p>
                     <p>
                         <label for="quantity">Quantity</label>
