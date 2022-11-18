@@ -1,6 +1,6 @@
-//incorporate table for current positions
 //Express JS and MongoDB Atlas
-//sell button needs to validate available shares to sell
+//sell button needs to validate available shares to sell(can loop through an array of current positions)
+//timer/countdown for when market closes or opens
 //needs validation for withdraws that exceed available cash
 //styling Div for visual appeal
 //closures as a way to retain data retrieved from fetch
@@ -18,16 +18,21 @@ let runningCashTotal = 0;
 let inputQuantity;
 
 //0 cash as starting value into HTML
-document.getElementById('runningCashTotal').innerHTML = `Available Cash: $${runningCashTotal}`;
+document.getElementById('runningCashTotal').innerHTML = `Available Cash for Withdraw: $${runningCashTotal}`;
 
 hamburgerButton.addEventListener('click', () => {
     navbarLinks.classList.toggle('active')
 })
 
 //name and email input
-document.getElementById('nameSubmit').onclick = function () {
-    inputFName = document.getElementById('fName').value;
-    document.getElementById('displayName').innerHTML = inputFName;
+document.getElementById('infoSubmit').onclick = function () {
+    let inputFName = document.getElementById('fName').value;
+    let inputLName = document.getElementById('lName').value;
+    let inputEmail = document.getElementById('email').value;
+    document.getElementById('displayName').value = inputFName;
+    document.getElementById('fNameFeedback').value = inputFName;
+    document.getElementById('lNameFeedback').value = inputLName;
+    document.getElementById('emailFeedback').value = inputEmail;
 }
 
 //search input
@@ -39,6 +44,7 @@ document.getElementById('searchSubmit').onclick = function () {
     const searchRequest = new Request(`https://api.stockdata.org/v1/data/quote?symbols=${inputSearch}&api_token=vCTVEcNfSsddr1B79XDxOjvxv5Zl9woMT9xniDJP`, {
         method: 'GET'
     });
+    // test API
     // const searchRequest = new Request(`https://api.polygon.io/v2/aggs/ticker/${inputSearch}/range/1/day/2021-07-22/2021-07-22?adjusted=true&sort=asc&limit=120&apiKey=QvSfpHQm4pw_QxWpME0ZGlAWnZ8ApOj4`, {
     //     method: 'GET'
     // });
@@ -58,27 +64,30 @@ document.getElementById('searchSubmit').onclick = function () {
         // const stockData = data.entries[0];
         const stockData = data.data[0];
         console.log('Success:', stockData);
-
+        quoteTable = document.getElementById('staticQuote');
         displayQuote(stockData);
 
         function displayQuote(stockData) {
+            quoteTable.innerHTML = '';
 
-            for (const [key, value] of Object.entries(stockData)) {
-                console.log(`${key}: ${value}`);
-                quoteTable = document.getElementById('staticQuote');
-                let row = `<tr>
-                        <td>${key}: ${value}<br></td>
-                        </tr>`;
-                quoteTable.innerHTML += row;
-            }
+            let tr = document.createElement('tr');
+            Object.entries(stockData).forEach(([key, value]) => {
+                let td = document.createElement('td');
+                td.innerHTML = `${key}: ${value}`;
+                tr.appendChild(td);
+            });
+            quoteTable.appendChild(tr);
+
         }
-        document.getElementById('name').innerHTML = `Name: ${stockData.name}`;
+
+        document.getElementById('name').innerHTML = `${stockData.name}`;
         document.getElementById('ticker').innerHTML = `Ticker: ${stockData.ticker}`;
         document.getElementById('price').innerHTML = `${stockData.price}`;
         document.getElementById('dayChange').innerHTML = `Day Change: ${stockData.day_change}`;
     });
+    staticQuoteDiv.style.display = 'block';
+    popUpTicketDiv.style.display = 'none';
 }
-
 
 document.getElementById('refreshButton').onclick = function () {
     inputSearch = document.getElementById("dataSearch").value;
@@ -98,19 +107,21 @@ document.getElementById('refreshButton').onclick = function () {
         const stockData = data.data[0];
         console.log('Success:', stockData);
         displayQuote(stockData);
+        quoteTable = document.getElementById('staticQuote');
 
         function displayQuote(stockData) {
-            for (const [key, value] of Object.entries(stockData)) {
-                console.log(`${key}: ${value}`);
-                quoteTable = document.getElementById('staticQuote');
-                let row = `<tr>
-                        <td>${key}: ${value}<br></td>
-                        </tr>`;
-                quoteTable.innerHTML += row;
-            }
+            quoteTable.innerHTML = '';
+            let tr = document.createElement('tr');
+            Object.entries(stockData).forEach(([key, value]) => {
+                let td = document.createElement('td');
+                td.innerHTML = `${key}: ${value}`;
+                tr.appendChild(td);
+            });
+            quoteTable.appendChild(tr);
+
         }
 
-        document.getElementById('name').innerHTML = `Name: ${stockData.name}`;
+        document.getElementById('name').innerHTML = `${stockData.name}`;
         document.getElementById('ticker').innerHTML = `Ticker: ${stockData.ticker}`;
         document.getElementById('price').innerHTML = `${stockData.price}`;
         document.getElementById('dayChange').innerHTML = `Day Change: ${stockData.day_change}`;
@@ -119,134 +130,159 @@ document.getElementById('refreshButton').onclick = function () {
 }
 //imitates a buy order
 
+let currentPositions = [];
+
+function acquisitionDate() {
+    let date = new Date();
+    let currentDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    let currentTime = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+    let purchaseDateTime = currentDate + ' ' + currentTime;
+    return purchaseDateTime;
+}
+
+function addPosition(Name, purchaseDateTime, Price, Quantity) {
+    let eachPosition = {
+        Name,
+        purchaseDateTime,
+        Price,
+        Quantity
+    };
+    currentPositions.push(eachPosition);
+
+    let positionTable = document.getElementById('currentPositions');
+    currentPositions.forEach(currentPosition => {
+        let tr = document.createElement('tr');
+        Object.entries(currentPosition).forEach(([key, value]) => {
+            let td = document.createElement('td');
+            td.innerHTML = `${value}`;
+            tr.appendChild(td);
+        });
+        positionTable.appendChild(tr);
+    });
+}
+
 document.getElementById('buyButton').onclick = function (inputQuantity, stockPrice) {
+    stockName = document.getElementById('name').innerHTML;
     stockPrice = Number(document.getElementById('price').innerHTML);
     inputQuantity = Number(document.getElementById('quantity').value);
-    console.log(typeof (runningCashTotal));
-    console.log(typeof (runningCashTotal));
     let costBasis = inputQuantity * stockPrice;
-    console.log(`check 1: ${costBasis}`);
-    console.log(`check 1: ${runningCashTotal}`);
-    console.log(typeof (runningCashTotal));
-    console.log(`check 1: ${inputQuantity}`);
-    console.log(`check 1: ${stockPrice}`);
+    let purchaseDateTime = acquisitionDate();
     if (runningCashTotal <= costBasis) {
-        alert('Not enough available cash for Buy Order...deposit more money!');
+        let shortAvailableCash = runningCashTotal - costBasis;
+        alert(`You need $${costBasis.toFixed(2)} in available cash to complete your Buy Order...you're short $${Math.abs(shortAvailableCash.toFixed(2))}, deposit more money!`);
     } else {
         runningCashTotal = runningCashTotal - costBasis;
-
-        console.log(`check 2: ${costBasis}`);
-        console.log(`check 2: ${runningCashTotal}`);
-        document.getElementById('runningCashTotal').innerHTML = `Available Cash: $${runningCashTotal}`;
-        return runningCashTotal;
+        addPosition(stockName, purchaseDateTime, stockPrice, inputQuantity);
     }
-    console.log(`check 3: ${runningCashTotal}`);
+    document.getElementById('runningCashTotal').innerHTML = `Total Cash: $${runningCashTotal.toFixed(2)}`;
+    document.getElementById('availableCashForTrade').innerHTML = `Available Cash for Trade: $${runningCashTotal.toFixed(2)}`;
+    return runningCashTotal;
 }
-console.log(`check 4: ${runningCashTotal}`);
+
+
 
 //imitates a sell order
 
-//hide/unhide staticQuote and popupTicket
+
+
+//hide/unhide staticQuote and popupTicket or reset tables
 
 const staticQuoteDiv = document.getElementById('staticQuote');
 const btnStaticQuoteDiv = document.getElementById('trade');
 const popUpTicketDiv = document.getElementById('popUpTicket');
-const btnPopUpTicketDiv = document.getElementById('changedMyMind');
+const btnResetQuotes = document.getElementById('reset');
 
 btnStaticQuoteDiv.onclick = function () {
-    if (staticQuoteDiv.style.display !== 'none') {
-        staticQuoteDiv.style.display = 'none';
-        popUpTicketDiv.style.display = 'block';
-    } else {
-        staticQuoteDiv.style.display = 'block';
-        popUpTicketDiv.style.display = 'none';
-    }
+    staticQuoteDiv.style.display = 'none';
+    popUpTicketDiv.style.display = 'block';
+    // if (staticQuoteDiv.style.display !== 'none') {
+    //     staticQuoteDiv.style.display = 'none';
+    //     popUpTicketDiv.style.display = 'block';
+    // } else {
+    //     staticQuoteDiv.style.display = 'block';
+    //     popUpTicketDiv.style.display = 'none';
+    // }
 };
 
 
+btnResetQuotes.onclick = function () {
+    staticQuoteDiv.innerHTML = '';
+    document.getElementById('name').innerHTML = '';
+    document.getElementById('ticker').innerHTML = '';
+    document.getElementById('price').innerHTML = '';
+    document.getElementById('dayChange').innerHTML = '';
+    staticQuoteDiv.style.display = 'none';
+    popUpTicketDiv.style.display = 'none';
+};
+
 //running total of cash balance
 
-
+//functions for deposits and withdraws
 
 document.getElementById('depositSubmit').onclick = function () {
     let inputDeposit = Number(document.getElementById('deposit').value);
     runningCashTotal = runningCashTotal + inputDeposit;
-    document.getElementById('runningCashTotal').innerHTML = `Available Cash: $${runningCashTotal}`;
+    document.getElementById('runningCashTotal').innerHTML = `Total Cash: $${runningCashTotal.toFixed(2)}`;
+    document.getElementById('availableCashForTrade').innerHTML = `Available Cash for Trade: $${runningCashTotal.toFixed(2)}`;
     // console.log(typeof (runningCashTotal));
+    alert(`$${inputDeposit.toFixed(2)} was deposited successfully! You have $${runningCashTotal.toFixed(2)} available for trade or withdraw.`);
     return runningCashTotal;
 }
 
 document.getElementById('withdrawSubmit').onclick = function () {
     let inputWithdraw = Number(document.getElementById('withdraw').value);
     if (runningCashTotal < inputWithdraw) {
-        console.log((runningCashTotal));
-        alert(`You're broke! Try a different dollar amount...`)
+        alert(`You currently have $${runningCashTotal.toFixed(2)} available for withdraw. Try withdrawing a different dollar amount...`);
     } else {
         runningCashTotal = runningCashTotal - inputWithdraw;
-        document.getElementById('runningCashTotal').innerHTML = `Available Cash: $${runningCashTotal}`;
+        document.getElementById('runningCashTotal').innerHTML = `Total Cash: $${runningCashTotal.toFixed(2)}`;
+        document.getElementById('availableCashForTrade').innerHTML = `Available Cash for Trade: $${runningCashTotal.toFixed(2)}`;
+        alert(`$${inputWithdraw.toFixed(2)} was withdrawn successfully! You have $${runningCashTotal.toFixed(2)} in your remaining balance.`);
         return runningCashTotal;
     }
 
 }
 
+//Character counter for textArea with maxlength of 600 char
 
+const textArea = document.getElementById('message');
+const characterCount = document.getElementById('characterCount');
+// const wordCount = document.getElementById('wordCount');
 
-//
-// //search input
-// let quoteTable;
-// let inputSearch;
-// //alphavantage API key: 0PLG7TU5UCLCIXN9
-// //https://api.polygon.io/v2/last/nbbo/AAPL?apiKey=QvSfpHQm4pw_QxWpME0ZGlAWnZ8ApOj4
-// document.getElementById("searchSubmit").onclick = function () {
-//     inputSearch = document.getElementById("dataSearch").value;
-//     // const searchRequest = new Request(`https://api.stockdata.org/v1/data/quote?symbols=${inputSearch}&api_token=vCTVEcNfSsddr1B79XDxOjvxv5Zl9woMT9xniDJP`, {
-//     //     method: 'GET'
-//     // });
-//     const searchRequest = new Request(`https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2021-07-22/2021-07-22?adjusted=true&sort=asc&limit=120&apiKey=QvSfpHQm4pw_QxWpME0ZGlAWnZ8ApOj4`, {
-//         method: 'GET'
-//     });
+textArea.oninput = () => {
+    let characters = textArea.value;
+    characterCount.textContent = characters.length;
+    //code to exclude spaces 
+    //characterCount.textContent = characters.replace(/\s/g, '').length;
+    //word counter
+    // let words = textArea.value.split(' ').filter((item) => {
+    //     return item != '';
+    // });
+    // wordCount.textContent = words.length;
+}
 
-//     fetch(searchRequest)
-//         .then((response) => {
-//             if (response.status === 200) {
-//                 return response.json();
-//             } else {
-//                 console.log(`error ${response.status}`);
-//             }
-//         }).then((data) => {
-//             const stockData = data.data[0];
-//             displayQuote(stockData);
-//             console.log('Success:', stockData);
+function sendEmail() {
+    let inputFName = document.getElementById("fName").value;
+    if (!document.getElementById('emailFeedback').value.includes("@")) {
+        alert("Email address field must contain @ sign, please input a valid email address.");
+    } else {
+        Email.send({
+            //working progress//
+            Host: "smtp.gmail.com",
+            Username: "chaochen11988testing@gmail.com",
+            Password: "ruL7iU8aZSFd4F5",
+            To: 'chaochen11988testing@gmail.com',
+            From: document.getElementById("emailFeedback").value,
+            Subject: "Feedback and suggestions",
+            Body: "First name: " + document.getElementById("fNameFeedback").value +
+                "<br> Last name: " + document.getElementById("lNameFeedback").value +
+                "<br> Email address: " + document.getElementById("emailFeedback").value +
+                "<br> Message: " + document.getElementById("message").value
+        }).then(
+            alert("Thank you for your inquiry," + " " + inputFName + "." + "\nI'll get back to you as soon as I can!"));
+    }
+}
 
-//             function displayQuote(stockData) {
-//                 for (const [key, value] of Object.entries(stockData)) {
-//                     console.log(`${key}: ${value}`);
-//                     quoteTable = document.getElementById('staticQuote');
-//                     let row = `<tr>
-//                         <td>${key}: ${value}<br></td>
-//                         </tr>`;
-//                     quoteTable.innerHTML += row;
-//                 }
-//             }
-//         }).catch((error) => console.error('Error:', error));
-// }
-//
-
-// console.log(inputSearch);
-// const request = new XMLHttpRequest();
-// request.open(`GET`, `https://api.stockdata.org/v1/data/quote?symbols=${inputSearch}&api_token=vCTVEcNfSsddr1B79XDxOjvxv5Zl9woMT9xniDJP`);
-
-// request.onload = () => {
-//     if (request.status === 200) {
-//         console.log(JSON.parse(request.response));
-//         (request.response);
-
-//     } else {
-//         console.log(`error ${request.status}`);
-//     }
-// }
-// //
-// request.send();
 
 
 
@@ -265,3 +301,13 @@ document.getElementById('withdrawSubmit').onclick = function () {
 //     // perform actions on the collection object
 //     client.close();
 // });
+
+// const express = require(`express`);
+
+// const app = express();
+
+// app.get(`/`, function (req, res) {
+//     res.send(`Hello World!`);
+// });
+
+// app.listen(3000);

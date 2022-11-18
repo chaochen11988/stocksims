@@ -9,6 +9,150 @@
     font-family: 'Sora', sans-serif, Helvetica, Tahoma, Georgia;
 }
 
+
+
+/* styling for form/container */
+.formContainer {
+    width: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+}
+
+form {
+    background: #E2E8F0;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+form h4 {
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 10px;
+}
+
+form input,
+form textarea {
+    border: 0;
+    margin: 7px;
+    padding: 5px;
+    outline: none;
+    background: #f5f5f5;
+    font-size: 16px;
+    width: 100%;
+}
+
+form div {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#searchDiv button {
+    background: #e8a87c;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    padding: 7px;
+    width: 100px;
+}
+
+form button {
+    background: #e8a87c;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    padding: 7px;
+    width: 100px;
+    margin: 18px auto;
+}
+
+#searchDiv button:hover,
+form button:hover {
+    background-color: #e27d60;
+}
+
+.countersContainter>div {
+    float: right;
+    padding: 0.1rem 0 0 0;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+#popUpTicket {
+    display: flex;
+    /* flex-direction: column;
+    width: 50%;
+    margin-left: 25%; */
+    justify-content: center;
+    align-content: center;
+}
+
+#staticQuote>tr {
+    display: flex;
+    flex-direction: column;
+    margin: 2% 5%;
+    justify-content: center;
+    align-content: center;
+}
+
+#staticQuote>tr>td {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+table,
+th,
+tr,
+td {
+
+    border-radius: 3px;
+    border: 3px solid;
+    border-color: #96ADCF;
+    border-spacing: 5.5px;
+    width: auto;
+}
+
+#positions {
+    text-align: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* tr {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+} */
+
+th,
+td {
+    padding: 5px;
+    text-align: right;
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-end; */
+}
+
+#runningCashTotal {
+    text-align: center;
+}
+
 /* CSS Grid layout */
 #popUpTicket {
     display: none;
@@ -25,7 +169,9 @@ main,
 footer,
 #introductionSection,
 #userInputSection,
-#searchSection {
+#searchSection,
+#positions,
+#currentPositions {
     grid-column-start: 1;
     grid-column-end: 13;
 }
@@ -40,6 +186,8 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 5px;
+    margin: 5px;
 }
 
 #headerLogo {
@@ -67,7 +215,8 @@ header {
 }
 
 #introductionSection {
-    padding: 20px;
+    text-align: center;
+    padding: 15px;
     font-size: 1rem;
 }
 
@@ -84,6 +233,7 @@ header {
 .navbar-links {
     display: none;
     width: 100%;
+
 }
 
 .navbar-links>ul {
@@ -92,16 +242,17 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 .navbar-links.active {
     display: flex;
+    margin: 5px;
 }
 
 .navbar-links>ul>li {
     display: inline-block;
     line-height: 35px;
-    margin: 0 5px 0 5px;
 }
 
 .navbar-links>ul>li>a {
@@ -112,6 +263,7 @@ header {
     padding: 0.1rem;
     display: block;
     font-size: 18px;
+
 }
 
 a.active,
@@ -141,6 +293,44 @@ a.active,
 
 #userInputSection {
     display: grid;
+
+}
+
+#searchSection>div>h4 {
+    text-align: center;
+    margin: 10px;
+}
+
+#searchDiv {
+    display: grid;
+
+}
+
+#dataSearch,
+#searchSubmit,
+#trade,
+#reset {
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+    align-content: center;
+}
+
+#dataSearch {
+    margin: 7px;
+    padding: 5px;
+    background: #f5f5f5;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+    justify-self: center;
+    max-width: 400px;
+}
+
+#searchButtonDiv {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
 
 }
 

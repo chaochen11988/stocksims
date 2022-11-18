@@ -34,10 +34,10 @@
         <div class="navbar-links">
             <ul>
                 <li><a href="Index.html" class="active">Home</a></li>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Transact</a></li>
-                <li><a href="#">Positons</a></li>
-                <li><a href="#">Feedback</a></li>
+                <li><a href="#dataSearch">Search</a></li>
+                <li><a href="#deposit">Transact</a></li>
+                <li><a href="#positions">Positons</a></li>
+                <li><a href="#fNameFeedback">Feedback</a></li>
             </ul>
         </div>
     </nav>
@@ -50,12 +50,12 @@
             <div>
 
                 <label for="fname">First name</label>
-                <input type="text" id="fName" name="fname">
+                <input type="text" id="fName" name="fname"><br>
                 <label for="lname">Last name</label>
-                <input type="text" id="lName" name="lname">
+                <input type="text" id="lName" name="lname"><br>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email">
-                <button type="button" id="nameSubmit">Submit</button>
+                <input type="email" id="email" name="email"><br>
+                <button type="button" id="infoSubmit">Submit</button>
 
             </div>
             <div>
@@ -72,24 +72,21 @@
 
             <div>
                 <h4>To begin, enter the ticker symbol for a publicly listed company and hit search.</h4>
-                <input type="text" id="dataSearch" name="datasearch">
-                <button type="submit" id="searchSubmit">Search</button><br><br>
+                <div id="searchDiv">
+                    <input type="text" id="dataSearch" name="datasearch"><br>
+                    <div id="searchButtonDiv">
+                        <button type="button" id="searchSubmit">Search</button>
+                        <button type="button" id="trade">Trade</button>
+                        <button type="button" id="reset">Reset</button>
+                    </div>
+                </div>
             </div>
 
             <div>
                 <div id="staticQuote">
-                    <table>
-
-                    </table>
-
-                </div>
-                <div>
-                    <button type="button" id="refreshButton">Refresh Quote</button>
-                    <button type="button" id="trade">Trade</button>
-                    <button type="button" id="changedMyMind">I Changed My Mind</button>
                 </div>
                 <div id="popUpTicket">
-                    <h3>Stocks and Exchange-Traded Funds</h3>
+                    <h3>Trade Confirmation</h3>
                     <p>
                         <label for="name" id="name">Name</label><br>
                         <label for="ticker" id="ticker">Symbol</label><br>
@@ -100,7 +97,7 @@
                         <label for="action">Action</label>
                         <select name="action" id="action">
                             <option value="buy">Buy</option>
-                            <option value="sell">Sell</option>
+                            <option value="sell" disabled>Sell</option>
                         </select>
 
                     </p>
@@ -108,7 +105,7 @@
                         <label for="quantityType">Quantity Type</label>
                         <select name="quantityType" id="quantityType">
                             <option value="shares">Shares</option>
-                            <option value="dollars">Dollars</option>
+                            <option value="dollars" disabled>Dollars</option>
                         </select>
 
                     </p>
@@ -119,11 +116,15 @@
                         <label for="orderType">Order Type</label>
                         <select name="orderType" id="orderType">
                             <option value="market">Market Order</option>
-                            <option value="limit">Limit Order</option>
+                            <option value="limit" disabled>Limit Order</option>
                         </select>
                     </p>
-                    <button type="button" id="buyButton">Buy</button>
-                    <button type="button" id="sellButton">Sell</button>
+                    <button type="button" id="refreshButton">Refresh Quote</button>
+                    <button type="button" id="buyButton"> Confirm Buy</button>
+                    <div id="availableCashForTrade">
+                        Available Cash for Trade: $0
+                    </div>
+                    <!-- <button type="button" id="sellButton">Confirm Sell</button> -->
 
                 </div>
             </div>
@@ -131,12 +132,19 @@
 
         </section>
         <section id="positions">
-            <h3>Positions</h3>
-            <div id="currentPositions">
-                currentPositions
+            <h3>Current Positions</h3>
+            <div>
+                <table id="currentPositions">
+                    <tr>
+                        <th>Name</th>
+                        <th>Purchase Date and Time</th>
+                        <th>Purchase Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </table>
             </div>
             <div id="runningCashTotal">
-                Available Cash:$
+                Total Cash: $0
             </div>
         </section>
     </main>
@@ -152,6 +160,33 @@
             <a href="https://www.linkedin.com/in/chao-chen-239030177" class="fa fa-linkedin"
                 id="footer-linkedin-icon"></a>
         </div>
+        <div class="formContainer">
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <div>
+                    <h4>Help me with this website!</h4>
+                </div>
+                <div>
+                    <input type="text" id="fNameFeedback" placeholder="First Name" required><br>
+                    <input type="text" id="lNameFeedback" placeholder="Last Name"><br>
+                    <input type="email" id="emailFeedback" placeholder="Email Address" required><br>
+                </div>
+                <div>
+                    <textarea id="message" rows="8" maxlength="600"
+                        placeholder="Provide some feedback to help improve this website." required></textarea>
+                </div>
+                <div class="countersContainter">
+                    <div>
+                        <span>Character Counter: </span>
+                        <span id="characterCount">0</span>
+                        <span id="maximumCount">/ 600</span>
+                        <!-- <span>Words</span>
+                        <div id="wordCount">0</div> -->
+                    </div>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
     </footer>
     <script src="scripts.js"></script>
 </body>
