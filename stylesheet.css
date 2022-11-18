@@ -113,6 +113,8 @@ form button:hover {
 #popUpTicket {
     justify-items: center;
     background: #E2E8F0;
+    padding: 5px;
+    margin: 5px;
 
 }
 
@@ -361,6 +363,9 @@ a.active,
     margin: 5px;
 }
 
+.tradeButtonDiv {
+    display: flex;
+}
 
 #fName,
 #lName,
@@ -387,18 +392,12 @@ a.active,
 
 #searchSection {
     display: grid;
-}
-
-#popUpticketDiv {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
 
 }
-
 
 #buyConfirmationDiv,
 #sellConfirmationDiv {
-    margin: 10px;
+    margin: 3px;
     border: solid;
     border-color: #96ADCF;
     border-radius: 5px;
@@ -447,7 +446,13 @@ footer>.social-media-icons {
 
 @media screen and (min-width: 361px) {}
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 720px) {
+
+    #popUpticketDiv {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+    }
 
     header {
         flex-direction: column;
