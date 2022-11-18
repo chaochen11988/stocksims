@@ -111,32 +111,10 @@ form button:hover {
 }
 
 #popUpTicket {
-    display: flex;
-    flex-direction: column;
+    justify-items: center;
     background: #E2E8F0;
 
-    /* width: 50%; */
-    /* margin-left: 10%;
-    margin-right: 10%; */
-    /* justify-items: center;
-    align-content: center; */
-    /* justify-content: flex-start; */
-
-
 }
-
-/* #popUpTicket>p,
-#popUpTicket>h3 {
-    display: flex;
-    justify-content: center;
-
-    width: 50%; 
-    margin-left: 10%;
-    margin-right: 10%;
-     justify-items: center;
-    align-content: center;
-    
-} */
 
 #staticQuote {
     justify-content: center;
@@ -369,14 +347,20 @@ a.active,
 #dataSearch,
 #searchSubmit,
 #trade,
-#reset,
-#refreshButton,
-#buyButton {
+#reset {
     display: flex;
     margin: 5px;
     justify-content: center;
     align-content: center;
 }
+
+#refreshButton,
+#buyButton,
+#refreshButton2,
+#sellButton {
+    margin: 5px;
+}
+
 
 #fName,
 #lName,
@@ -403,6 +387,30 @@ a.active,
 
 #searchSection {
     display: grid;
+}
+
+#popUpticketDiv {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+
+#buyConfirmationDiv,
+#sellConfirmationDiv {
+    margin: 10px;
+    border: solid;
+    border-color: #96ADCF;
+    border-radius: 5px;
+    display: grid;
+}
+
+#buyConfirmationDiv {
+    padding: 13px 10px 10px 10px;
+}
+
+#sellConfirmationDiv {
+    padding: 10px 10px 13px 10px;
 }
 
 

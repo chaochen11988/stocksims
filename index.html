@@ -91,22 +91,25 @@
                 <div id="staticQuote">
                 </div>
                 <div id="popUpTicket">
-                    <h3>Trade Confirmation</h3>
-
-                    <p>
-                        <label for="name" id="name">Name</label><br>
-                        <label for="ticker" id="ticker">Symbol</label><br>
-                        <label for="price" id="price">Price</label><br>
-                        <label for="dayChange" id="dayChange">Day Change</label><br>
-                    </p>
-                    <p>
-                        <label for="action">Action</label>
-                        <select name="trade" id="tradeType">
-                            <option value="buy">Buy</option>
-                            <option value="sell" disabled>Sell</option>
-                        </select>
-                    </p>
-                    <!-- <p>
+                    <div>
+                        <h3>Trade Confirmation</h3>
+                    </div>
+                    <div id="popUpticketDiv">
+                        <div id="buyConfirmationDiv">
+                            <p>
+                                <label for="name" id="name">Name</label><br>
+                                <label for="ticker" id="ticker">Symbol</label><br>
+                                <label for="price" id="price">Price</label><br>
+                                <label for="dayChange" id="dayChange">Day Change</label><br>
+                            </p>
+                            <p>
+                                <label for="action">Action</label>
+                                <select name="trade" id="tradeType">
+                                    <option value="buy">Buy</option>
+                                    <option value="sell" disabled>Sell</option>
+                                </select>
+                            </p>
+                            <!-- <p>
                         <label for="action">Action</label>
                         <div>
                             <input type="radio" id="buy" name="buy" checked>
@@ -117,33 +120,76 @@
                             <input type="radio" id="sell" name="sell">
                             <label for="sell">Sell</label>
                           </div>
-                    </p> -->
-                    <!-- inprogress for sell orders
+                        </p> -->
+                            <!-- inprogress for sell orders
                         
                         <p>
                         <label for="acquisitionDate">Acquisition Date</label>
                         <input type="text" id="acquisitionDate" name="acquisitionDate"></p>
-                    </p> -->
-                    <p>
-                        <label for="quantityType">Quantity Type</label>
-                        <select name="quantityType" id="quantityType">
-                            <option value="shares">Shares</option>
-                            <option value="dollars" disabled>Dollars</option>
-                        </select>
-                    </p>
-                    <p>
-                        <label for="quantity">Quantity</label>
-                        <input type="text" id="quantity" name="quantity"></p>
-                    <p>
-                        <label for="orderType">Order Type</label>
-                        <select name="orderType" id="orderType">
-                            <option value="market">Market Order</option>
-                            <option value="limit" disabled>Limit Order</option>
-                        </select>
-                    </p>
-                    <div>
-                        <button type="button" id="refreshButton">Refresh Quote</button>
-                        <button type="button" id="buyButton"> Confirm Buy</button>
+                        </p> -->
+                            <p>
+                                <label for="quantityType">Quantity Type</label>
+                                <select name="quantityType" id="quantityType">
+                                    <option value="shares">Shares</option>
+                                    <option value="dollars" disabled>Dollars</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="quantity">Quantity</label>
+                                <input type="text" id="quantity" name="quantity"></p>
+                            <p>
+                                <label for="orderType">Order Type</label>
+                                <select name="orderType" id="orderType">
+                                    <option value="market">Market Order</option>
+                                    <option value="limit" disabled>Limit Order</option>
+                                </select>
+                            </p>
+                            <div>
+                                <button type="button" id="refreshButton">Refresh Quote</button>
+                                <button type="button" id="buyButton"> Confirm Buy</button>
+                            </div>
+                        </div>
+                        <div id="sellConfirmationDiv">
+                            <p>
+                                <label for="name2" id="name2">Name</label><br>
+                                <label for="ticker2" id="ticker">Symbol</label><br>
+                                <label for="price2" id="price2">Price</label><br>
+                                <label for="dayChange2" id="dayChange2">Day Change</label><br>
+                            </p>
+                            <p>
+                                <label for="action2">Action</label>
+                                <select name="trade2" id="tradeType2">
+                                    <option value="buy" disabled>Buy</option>
+                                    <option value="sell">Sell</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="quantityType2">Quantity Type</label>
+                                <select name="quantityType2" id="quantityType2">
+                                    <option value="shares">Shares</option>
+                                    <option value="dollars" disabled>Dollars</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="acquisitionDate">Acquisition Date</label>
+                                <input type="text" id="acquisitionDate" name="acquisitionDate"></p>
+                            </p>
+                            <p>
+                                <label for="quantity2">Quantity</label>
+                                <input type="text2" id="quantity2" name="quantity2"></p>
+                            <p>
+                                <label for="orderType2">Order Type</label>
+                                <select name="orderType2" id="orderType2">
+                                    <option value="market">Market Order</option>
+                                    <option value="limit" disabled>Limit Order</option>
+                                </select>
+                            </p>
+                            <div>
+                                <button type="button" id="refreshButton2">Refresh Quote</button>
+                                <button type="button" id="sellButton"> Confirm Sell</button>
+                            </div>
+                        </div>
+
                     </div>
                     <div id="availableCashForTrade">
                         Available Cash for Trade: $0

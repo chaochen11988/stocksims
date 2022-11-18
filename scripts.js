@@ -194,7 +194,7 @@ const btnResetQuotes = document.getElementById('reset');
 
 btnStaticQuoteDiv.onclick = function () {
     staticQuoteDiv.style.display = 'none';
-    popUpTicketDiv.style.display = 'flex';
+    popUpTicketDiv.style.display = 'grid';
     // if (staticQuoteDiv.style.display !== 'none') {
     //     staticQuoteDiv.style.display = 'none';
     //     popUpTicketDiv.style.display = 'block';
