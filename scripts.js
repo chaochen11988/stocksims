@@ -26,10 +26,11 @@ hamburgerButton.addEventListener('click', () => {
 
 //name and email input
 document.getElementById('infoSubmit').onclick = function () {
+
     let inputFName = document.getElementById('fName').value;
     let inputLName = document.getElementById('lName').value;
     let inputEmail = document.getElementById('email').value;
-    document.getElementById('displayName').value = inputFName;
+    document.getElementById("displayName").innerHTML = inputFName;
     document.getElementById('fNameFeedback').value = inputFName;
     document.getElementById('lNameFeedback').value = inputLName;
     document.getElementById('emailFeedback').value = inputEmail;

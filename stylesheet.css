@@ -235,6 +235,8 @@ header {
 
 #headerGreeting {
     display: flex;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #introductionSection {
