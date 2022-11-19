@@ -58,8 +58,8 @@ form div {
 #userInputSection button {
     display: grid;
     justify-content: center;
-    justify-self: center;
-    margin: 5px;
+    justify-self: right;
+    margin: 4px;
 }
 
 #popUpTicket button {
@@ -314,33 +314,31 @@ a.active,
     border-radius: 20px;
 }
 
+#userInfoDiv>label,
+#transactionDiv>label {
+    display: grid;
+    justify-content: left;
+}
 
-
-
-
-#userInputSection>div {
+#userInfoDiv,
+#transactionDiv {
+    margin: 10px;
+    padding: 20px;
+    border: solid;
+    border-color: #96ADCF;
+    border-radius: 5px;
     display: grid;
 }
 
-#transactionDiv>div,
-#userInfoDiv>div {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-}
 
-#userInfoDiv>div>label,
-#transactionDiv>div>label {
+#userInput {
     display: grid;
-    justify-content: center;
     justify-items: center;
-}
-
-#userInputSectionDiv {
-    padding: 5px;
+    background: #E2E8F0;
+    padding: 10px;
     margin: 5px;
 }
 
-#userInputSection>h4,
 #searchSection>div>h4 {
     display: grid;
     text-align: center;
@@ -454,6 +452,7 @@ footer>.social-media-icons {
 
 @media screen and (min-width: 720px) {
 
+    #userInputDiv,
     #popUpticketDiv {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -490,18 +489,18 @@ footer>.social-media-icons {
 }
 
 @media screen and (min-width: 830px) {
-    #userInputSectionDiv {
+    /* #userInputSectionDiv {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
 
-    }
+    } */
 }
 
 @media screen and (min-width: 1007px) {
-    #userInputSectionDiv {
+    /* #userInputSectionDiv {
         padding-left: 110px;
         padding-right: 110px;
-    }
+    } */
 
     header {
         flex-direction: row;

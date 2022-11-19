@@ -35,7 +35,7 @@
             <ul>
                 <li><a href="Index.html" class="active">Home</a></li>
                 <li><a href="#dataSearch">Search</a></li>
-                <li><a href="#deposit">Transact</a></li>
+                <li><a href="#transactionDiv">Transact</a></li>
                 <li><a href="#positions">Positons</a></li>
                 <li><a href="#fNameFeedback">Feedback</a></li>
             </ul>
@@ -49,10 +49,13 @@
             <h3>Welcome to StockSims. A game that simulates the stock market!</h3>
         </section>
         <section id="userInputSection">
-            <h4>Lets start with your information and a deposit.</h4>
-            <div id="userInputSectionDiv">
-                <div id="userInfoDiv">
-                    <div>
+
+            <div id="userInput">
+                <div>
+                    <h4>Lets start with your information and a deposit.</h4>
+                </div>
+                <div id="userInputDiv">
+                    <div id="userInfoDiv">
                         <label for="fname">First name</label>
                         <input type="text" id="fName" name="fname"><br>
                         <label for="lname">Last name</label>
@@ -61,9 +64,7 @@
                         <input type="email" id="email" name="email"><br>
                         <button type="button" id="infoSubmit">Submit</button>
                     </div>
-                </div>
-                <div id="transactionDiv">
-                    <div>
+                    <div id="transactionDiv">
                         <label for="deposit">Deposit</label>
                         <input type="number" id="deposit" name="deposit">
                         <button type="button" id="depositSubmit">Submit</button><br>
@@ -71,8 +72,8 @@
                         <input type="number" id="withdraw" name="withdraw">
                         <button type="button" id="withdrawSubmit">Submit</button>
                     </div>
-
                 </div>
+
             </div>
         </section>
 
